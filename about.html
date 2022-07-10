@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ito-Webdesign-</title>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+</head>
+
+<body>
+    <header>
+        <h1><a href="index.html"><img src="./images/itologo.png" alt="itoロゴ"></a></h1>
+    </header>
+    <div class="scrolldown4"><span>Scroll</span></div>
+
+
+    <div id="about" class="under-about_wrap">
+        <div id="star" class="stars"></div>
+        <h3 class="about_title">About</h3>
+        <div class="about_contents">
+            <img class="about_picture" src="./images/IMG_0320.JPG" alt="">
+            <div class="about_text">
+                <h4 class="my_name">Kazuya Miyashita</h4>
+                <div class="my_profile">
+                    <p class="my_profile_name">宮下 和也</p>
+                    <p class="my_profile_from">長野県在住 [25]</p>
+                </div>
+                <p class="ito_origin">「ito」にはさまざまな意味が込められています。</p>
+                <ul class="about_ito fadein">
+                    <li>お店やサービスの魅力をWebサイトで表現し利用者を<span class="text_decoration">結ぶ</span>お手伝いをしたい。</li>
+                    <li>なぜクWebサイトを作ろうと思ったのか？その目的と結果を結ぶ<span class="text_decoration">糸</span>となるようなWebサイトを作りたい。
+                    </li>
+                    <li>どうしたら想いや魅力をターゲットに届けられるのか試行錯誤して<span class="text_decoration">意図</span>のあるデザインをつくりたい。
+                    </li>
+                    <li>地元で頑張っている方と<span class="text_decoration">繋がり</span>たい。</li>
+                </ul>
+                <p class="ito_policy fadein">目的達成のためにひとつひとつ意味のあるデザインを考えWebサイト制作を通して様々な繋がりを大切にしたいと考えています。</p>
+                <h3 class="aboutcontents_title fadein">制作者プロフィール</h3>
+                <ul class="about_ito fadein">
+                    <li>1997年2月 長野県岡谷市で生まれ、現在に至るまで長野県で暮らしています。</li>
+                    <li>就職も地元で決め、2019年地元の産業資材商社に入社しました。</li>
+                    <li>社会人4年目に突入し「個人でも仕事をしたい」と思い、2022年Webデザインを学び始めます。</li>
+                    <li>まだまだ始めたばかりですが、今後の目標は「産業資材商社」と「Webデザイン」で<br><span
+                            class="text_decoration">地元の経営者の方から頼られる存在</span>になりたいと考えています。</li>
+                </ul>
+                <h3 class="aboutcontents_title fadein">使用ソフト</h3>
+                <ul class="about_ito fadein">
+                    <li>Visual Studio Code</li>
+                    <li>Photoshop / illustrator</li>
+                </ul>
+
+                <p class="about_ask fadein">少しでも興味を持っていただけたらお気軽にお問い合わせください。</p>
+
+                <div class="btn fadein">
+                    <a href="https://www.instagram.com/___kazuya.m" target="_blank">
+                        <p class="about_p">更に詳しく知る</p>
+                        <img class="insta-icon2" src="./images/glyph-logo_May2016.png" alt="インスタicon">
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <footer>
+        <a class="insta-icon" href="https://www.instagram.com/___kazuya.m" target="_blank"><img
+                src="./images/Instagram_Glyph_Gradient_RGB.png" alt="インスタicon"></a>
+        <div class="footer_wrap">
+            <nav class="pc_nav">
+                <ul>
+                    <li><a href="./index.html#service">Service</a></li>
+                    <li><a href="./index.html#gallery">Gallery</a></li>
+                    <li><a href="./index.html#about">About</a></li>
+                    <li><a href="./index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <p class="copylite"><small>&copy; 2022 ito All Rights Reserved</small> </p>
+        </div>
+
+
+    </footer>
+    <div class="sp_btn"><span></span></div>
+    <nav class="sp_nav">
+        <ul>
+            <li><a href="./index.html#service">Service</a></li>
+            <li><a href="./index.html#gallery">Gallery</a></li>
+            <li><a href="./index.html#about">About</a></li>
+            <li><a href="./index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <script>
+        // スマホ版メニュー表示
+        $(function () {
+            $('.sp_btn').click(function () {
+                $('.sp_nav').fadeToggle();
+                $(this).toggleClass('open');
+            });
+        });
+        $(".sp_nav ul a").on("click", function () {
+            $(".sp_nav").fadeToggle();
+            $('.sp_btn').removeClass("open");
+        })
+
+
+        $(window).on('load', function () {
+            for (var i = 0; i < 300; i++) {
+                //get random dimensions
+                var x = Math.random() * 100;
+                var y = Math.random() * 100;
+                var d = Math.random() * 4;
+                var s = Math.random() * 2 + 1.5;
+                //create new element and add to html
+                var star = document.createElement("div");
+                star.classList.add("star");
+                var sky = document.getElementById("star");
+                about.appendChild(star);
+                star.style.width = d + "px";
+                star.style.height = d + "px";
+                star.style.height = d;
+                star.style.top = y + "%";
+                star.style.left = x + "%";
+                star.style.animationDuration = s + "s";
+            }
+        });
+
+        $(function () {
+            $(window).scroll(function () {
+                $('.fadein').each(function () {
+                    var targetElement = $(this).offset().top;
+                    var scroll = $(window).scrollTop();
+                    var windowHeight = $(window).height();
+                    if (scroll > targetElement - windowHeight + 140) {
+                        $(this).css('opacity', '1');
+                        $(this).css('transform', 'translateY(0)');
+                    }
+                    else {
+                        $(this).css('opacity', '0');
+                        $(this).css('transform', 'translateY(20px)');
+                    }
+                });
+            });
+        });
+
+        jQuery(function () {
+
+            var footer = $('.btn').innerHeight(); // footerの高さを取得
+
+            window.onscroll = function () {
+                var point = window.pageYOffset; // 現在のスクロール地点 
+                var docHeight = $(document).height(); // ドキュメントの高さ
+                var dispHeight = $(window).height(); // 表示領域の高さ
+
+                if (point > docHeight - dispHeight - footer + 10) { // スクロール地点>ドキュメントの高さ-表示領域-footerの高さ
+                    $('.scrolldown4').addClass('is-hidden'); //footerより下にスクロールしたらis-hiddenを追加
+                } else {
+                    $('.scrolldown4').removeClass('is-hidden'); //footerより上にスクロールしたらis-hiddenを削除
+                }
+            };
+        });
+
+
+
+
+
+    </script>
+</body>
+
+</html>

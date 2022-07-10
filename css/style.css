@@ -1,0 +1,934 @@
+@charset "utf-8";
+/* リセット */
+html,
+body,
+header,
+footer,
+main,
+section,
+h1,
+h2,
+h3,
+ul,
+li,
+p,
+dl,
+dt,
+dd {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    color: #ffff;
+    font-family: "A1 Mincho", "游明朝", YuMincho, "Hiragino Mincho ProN W3",
+        "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝",
+        "ＭＳ 明朝", serif;
+    font-feature-settings: "palt";
+}
+
+a {
+    /*下線を消す*/
+    text-decoration: none;
+    /*色を消す*/
+    color: inherit;
+    transition: 0.3s;
+}
+
+a:hover {
+    opacity: 0.5;
+}
+
+ul {
+    /*左の「・」を消す*/
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: bottom;
+    border: none;
+}
+
+/* ヘッダー */
+h1 {
+    width: 80px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
+}
+/* メインタイトル */
+.main_wrap {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: rgb(171, 134, 137);
+    background: linear-gradient(
+        0deg,
+        rgba(171, 134, 137, 1) 30%,
+        rgba(164, 176, 184, 1) 40%,
+        rgba(141, 163, 188, 1) 50%,
+        rgba(89, 117, 159, 1) 100%
+    );
+}
+h2 {
+    writing-mode: vertical-rl;
+    font-size: 30px;
+    line-height: 50px;
+    margin-top: 150px;
+}
+h2 span {
+    margin-top: 30px;
+}
+
+.main_title {
+    display: none;
+}
+
+/*=== 9-1-4 矢印が動いてスクロールを促す  ====*/
+
+/*スクロールダウン全体の場所*/
+.scrolldown4 {
+    /*描画位置※位置は適宜調整してください*/
+    position: fixed;
+    bottom: 300%;
+    right: 10vw;
+    z-index: 40;
+    /*矢印の動き1秒かけて永遠にループ*/
+    animation: arrowmove 1s ease-in-out infinite;
+}
+
+/*下からの距離が変化して全体が下→上→下に動く*/
+@keyframes arrowmove {
+    0% {
+        bottom: 1%;
+    }
+    50% {
+        bottom: 3%;
+    }
+    100% {
+        bottom: 1%;
+    }
+}
+
+/*Scrollテキストの描写*/
+.scrolldown4 span {
+    /*描画位置*/
+    position: absolute;
+    left: -20px;
+    bottom: 260px;
+    /*テキストの形状*/
+    color: #eee;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    /*縦書き設定*/
+    -ms-writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+}
+
+/* 矢印の描写 */
+.scrolldown4:before {
+    content: "";
+    /*描画位置*/
+    position: absolute;
+    bottom: 260px;
+    right: -6px;
+    /*矢印の形状*/
+    width: 1px;
+    height: 20px;
+    background: #eee;
+    transform: skewX(-31deg);
+}
+
+.scrolldown4:after {
+    content: "";
+    /*描画位置*/
+    position: absolute;
+    bottom: 260px;
+    right: 0;
+    /*矢印の形状*/
+    width: 1px;
+    height: 50px;
+    background: #eee;
+}
+
+/*footerまでスクロールしたら消す*/
+.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: 1s;
+}
+
+/* サービス */
+.service_wrap {
+    height: 100vh;
+    padding: 0 25px 50px;
+    text-align: center;
+    background: rgb(203, 223, 243);
+    background: linear-gradient(
+        0deg,
+        rgba(203, 223, 243, 1) 0%,
+        rgba(30, 155, 214, 1) 60%,
+        rgba(0, 117, 189, 1) 85%,
+        rgba(0, 91, 150, 1) 100%
+    );
+}
+.service_title {
+    font-size: 30px;
+    padding: 50px 0;
+}
+.servicecontents {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    max-width: 1000px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.servicecontents img {
+    width: 25vw;
+}
+.servicecontents_title {
+    font-size: 25px;
+    border-bottom: 1px solid #ffff;
+    padding-bottom: 10px;
+    margin: 30px;
+}
+
+.service_text {
+    text-align: start;
+    font-size: 18px;
+    width: 400px;
+    letter-spacing: 0.2em;
+    line-height: 2;
+}
+
+.service_p {
+    font-size: 15px;
+    font-weight: bold;
+    color: #144e83;
+    position: relative;
+    top: 13px;
+    left: 85px;
+}
+
+.service_triangle {
+    width: 6px;
+    height: 8px;
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    background-color: #144e83;
+    position: relative;
+    top: 17px;
+    left: 140px;
+}
+
+/* ギャラリー */
+.gallery_wrap {
+    height: 100vh;
+    text-align: center;
+    background: rgb(202, 105, 67);
+    background: linear-gradient(
+        0deg,
+        rgba(202, 105, 67, 1) 15%,
+        rgba(187, 159, 135, 1) 45%,
+        rgba(68, 85, 110, 1) 85%
+    );
+}
+.gallery_title {
+    font-size: 30px;
+    padding: 50px 0;
+}
+
+.btn {
+    width: 250px;
+    height: 40px;
+    margin: 50px auto 0;
+}
+
+.gallery_triangle {
+    width: 6px;
+    height: 8px;
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    background-color: #144e83;
+    position: relative;
+    top: 16px;
+    left: 160px;
+}
+.btn a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: #ffffff;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+}
+
+.btn_p {
+    font-size: 15px;
+    font-weight: bold;
+    color: #144e83;
+    position: relative;
+    top: 13px;
+    left: 95px;
+}
+
+.btn a:hover {
+    background: #ffff7f;
+    opacity: 1;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.gallery_now {
+    color: #ffff;
+    font-size: 18px;
+    margin-top: 50px;
+}
+
+/* スライダー */
+.slick-next:before {
+    display: none;
+}
+
+.slick-next {
+    right: 0;
+}
+.gallery_item {
+    margin: 0 30px;
+}
+
+/* アバウト */
+.about_wrap {
+    height: 100vh;
+    padding: 0 25px;
+    background: rgb(20, 78, 131);
+    background: linear-gradient(
+        0deg,
+        rgba(20, 78, 131, 1) 0%,
+        rgba(27, 54, 81, 1) 60%,
+        rgba(24, 39, 59, 1) 90%,
+        rgba(10, 24, 43, 1) 100%
+    );
+    position: relative;
+}
+.about_title {
+    font-size: 30px;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.star {
+    background-color: white;
+    border-radius: 50%;
+    animation-name: twinkle;
+    animation-iteration-count: infinite;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 90;
+}
+
+@keyframes twinkle {
+    50% {
+        transform: scale(0.2);
+    }
+}
+.about_contents {
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    align-items: flex-start;
+    padding: 50px 0 150px;
+}
+.about_picture {
+    width: 25%;
+    border-radius: 1%;
+}
+.about_text {
+    width: 70%;
+    letter-spacing: 0.2em;
+}
+.my_name {
+    font-size: 30px;
+}
+h4 span {
+    padding-right: 30px;
+}
+.my_profile {
+    display: flex;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.my_profile_name {
+    padding-right: 30px;
+    border-right: 1px solid #ffff;
+}
+.my_profile_from {
+    padding-left: 30px;
+}
+.about_ito {
+    line-height: 2;
+}
+
+.about_triangle {
+    width: 6px;
+    height: 8px;
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    background-color: #144e83;
+    position: relative;
+    top: 16px;
+    left: 145px;
+}
+
+/* アバウト下層ページ */
+.under-about_wrap {
+    height: 100%;
+    padding: 0 25px 150px;
+    background: rgb(20, 78, 131);
+    background: linear-gradient(
+        0deg,
+        rgba(20, 78, 131, 1) 0%,
+        rgba(27, 54, 81, 1) 60%,
+        rgba(24, 39, 59, 1) 90%,
+        rgba(10, 24, 43, 1) 100%
+    );
+}
+
+.text_decoration {
+    color: #ffff7f;
+}
+
+.ito_origin {
+    margin: 80px 0 60px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 2;
+}
+
+.ito_policy {
+    margin: 10px 0 50px;
+    line-height: 2;
+}
+
+.about_ito li {
+    text-align: start;
+    font-size: 16px;
+    padding-bottom: 30px;
+    line-height: 2;
+}
+
+.about_ask {
+    margin-top: 80px;
+    line-height: 2;
+}
+
+.aboutcontents_title {
+    font-size: 25px;
+    border-bottom: 1px solid #ffff;
+    padding-bottom: 10px;
+    margin: 80px 0 50px;
+    text-align: center;
+}
+
+.about_p {
+    font-size: 15px;
+    font-weight: bold;
+    color: #144e83;
+    position: relative;
+    top: 13px;
+    left: 70px;
+}
+
+.insta-icon2 {
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: 13px;
+    left: 103px;
+}
+
+/* コンタクト */
+.contact_wrap {
+    height: 100vh;
+    padding: 0 25px 130px;
+    text-align: center;
+    background: rgb(186, 137, 95);
+    background: linear-gradient(
+        0deg,
+        rgba(186, 137, 95, 1) 30%,
+        rgba(20, 78, 131, 1) 45%
+    );
+}
+
+.contact_title {
+    font-size: 30px;
+    padding-top: 50px;
+}
+.contact_text {
+    padding-top: 50px;
+    font-size: 18px;
+    letter-spacing: 0.2em;
+    line-height: 2;
+}
+
+.input-name {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.input-e-mail,
+.input-message {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.input-name label,
+.input-message label {
+    letter-spacing: 0.3em;
+}
+#your-name,
+#your-email {
+    width: 30%;
+    height: 25px;
+}
+#your-message {
+    width: 30%;
+    height: 200px;
+}
+label span {
+    margin: 0 10px;
+    color: #ffff7f;
+}
+
+textarea {
+    resize: none;
+}
+.contact_btn {
+    width: 250px;
+    height: 40px;
+    margin: 50px auto 0;
+}
+
+.contact_btn p {
+    font-size: 15px;
+    font-weight: bold;
+    color: #144e83;
+    position: relative;
+    top: 13px;
+    left: 70px;
+}
+
+button {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: #ffffff;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    border: none;
+}
+
+button:hover {
+    background: #ffff7f;
+    opacity: 1;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.contact_triangle {
+    width: 6px;
+    height: 8px;
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    background-color: #144e83;
+    position: relative;
+    top: 16px;
+    left: 120px;
+}
+
+.hanabi-1 {
+    position: relative;
+    right: 30vw;
+    top: -18vh;
+    z-index: 70;
+}
+.hanabi-2 {
+    position: relative;
+    left: 15vw;
+    top: -15vh;
+    z-index: 70;
+}
+
+/* フッター */
+footer {
+    position: fixed;
+    bottom: -7vw;
+    background-image: url(../images/footer.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 25vw;
+    width: 100%;
+    z-index: 60;
+}
+.insta-icon img {
+    width: 50px;
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+}
+.footer_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.pc_nav ul {
+    display: flex;
+    position: fixed;
+    bottom: 20px;
+    left: 14vw;
+}
+
+.copylite {
+    color: #313131;
+    display: flex;
+    position: fixed;
+    bottom: 10px;
+    right: 16vw;
+}
+.pc_nav ul li {
+    width: 105px;
+    color: #313131;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 55px;
+}
+footer a:hover,
+.insta-icon :hover {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+/* スマホ版メニューは消す */
+.sp_nav,
+.sp_btn {
+    display: none;
+}
+
+.fadein {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s;
+}
+
+@media screen and (max-width: 1100px) {
+    .pc_nav {
+        display: none;
+    }
+    .sp_btn {
+        display: block;
+        cursor: pointer;
+        position: fixed;
+        right: 30px;
+        bottom: 10px;
+        z-index: 80;
+        height: 80px;
+    }
+    .sp_btn span {
+        background: #313131;
+        width: 33px;
+        height: 3px;
+        display: block;
+        transition: 0.3s;
+        position: relative;
+        top: 50px;
+    }
+    .sp_btn span::before,
+    .sp_btn span::after {
+        content: "";
+        background: #313131;
+        width: 33px;
+        height: 3px;
+        display: block;
+        position: absolute;
+        transition: 0.3s;
+    }
+    .sp_btn span::before {
+        bottom: 10px;
+        transition: 0.3s;
+    }
+    .sp_btn span::after {
+        top: 10px;
+        transition: 0.3s;
+    }
+
+    .open span {
+        background: transparent;
+    }
+    .open span::before {
+        bottom: 0px;
+        transform: rotate(45deg);
+        background-color: #fff;
+    }
+    .open span::after {
+        top: 0px;
+        transform: rotate(135deg);
+        background-color: #fff;
+    }
+
+    .sp_nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 70;
+    }
+    .sp_nav ul {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .sp_nav ul li {
+        color: #fff;
+        text-align: center;
+        font-size: 20px;
+        padding: 40px 0;
+    }
+
+    .copylite {
+        display: block;
+        width: 100%;
+        right: 0;
+    }
+}
+
+/* スマホ版 */
+@media screen and (max-width: 890px) {
+    /* ヘッダー */
+
+    h1 {
+        width: 9%;
+    }
+
+    /* メインタイトル */
+
+    .main_wrap {
+        background: linear-gradient(
+            0deg,
+            rgba(171, 134, 137, 1) 10%,
+            rgba(164, 176, 184, 1) 25%,
+            rgba(141, 163, 188, 1) 40%,
+            rgba(89, 117, 159, 1) 100%
+        );
+    }
+
+    h2 p {
+        font-size: 6vw;
+    }
+    .scrolldown4 span {
+        bottom: 16vh;
+    }
+
+    .scrolldown4:before {
+        bottom: 15vh;
+    }
+
+    .scrolldown4:after {
+        bottom: 15vh;
+    }
+
+    .service_wrap {
+        height: 100%;
+    }
+
+    .service_title p {
+        font-size: 9vw;
+    }
+
+    .servicecontents_title {
+        font-size: 5vw;
+    }
+
+    .servicecontents {
+        display: block;
+    }
+
+    .service_text {
+        font-size: 4vw;
+        width: 100%;
+        padding-bottom: 50px;
+    }
+
+    /* ギャラリー */
+
+    .gallery_wrap {
+        background: linear-gradient(
+            0deg,
+            rgba(202, 105, 67, 1) 5%,
+            rgba(187, 159, 135, 1) 25%,
+            rgba(68, 85, 110, 1) 40%
+        );
+    }
+
+    .gallery_title p {
+        font-size: 9vw;
+    }
+
+    .gallery_now {
+        font-size: 4vw;
+    }
+    /* アバウト */
+
+    .about_wrap {
+        height: 100%;
+    }
+
+    .about_title p {
+        font-size: 9vw;
+    }
+
+    .about_contents {
+        display: block;
+        text-align: center;
+    }
+
+    .about_picture {
+        width: 60%;
+    }
+
+    .about_text {
+        width: 100%;
+    }
+
+    .my_name {
+        font-size: 7vw;
+    }
+
+    h4 span {
+        padding-right: 20px;
+    }
+
+    .my_profile {
+        font-size: 4vw;
+        justify-content: center;
+    }
+
+    .my_profile_from {
+        padding-left: 25px;
+    }
+    .my_profile span {
+        margin-right: 10px;
+    }
+
+    .about_ito {
+        font-size: 4vw;
+        text-align: start;
+    }
+
+    /* アバウト下層ページ */
+
+    .under-about_wrap {
+        padding: 0 25px;
+    }
+
+    .ito_origin {
+        font-size: 6vw;
+        text-align: start;
+    }
+
+    .ito_policy {
+        font-size: 4vw;
+        text-align: start;
+    }
+
+    .ito_mean li,
+    .about_ito li {
+        font-size: 4vw;
+    }
+
+    .aboutcontents_title {
+        font-size: 6vw;
+    }
+
+    .about_ask {
+        font-size: 4vw;
+        text-align: start;
+    }
+
+    /* コンタクト */
+    .contact_wrap {
+        background: linear-gradient(
+            0deg,
+            rgba(186, 137, 95, 1) 5%,
+            rgba(20, 78, 131, 1) 25%
+        );
+    }
+
+    .contact_wrap {
+        height: 100%;
+    }
+
+    .contact_title {
+        font-size: 9vw;
+    }
+
+    .contact_text {
+        font-size: 4vw;
+        text-align: start;
+    }
+
+    #your-name,
+    #your-email {
+        width: 60%;
+    }
+    #your-message {
+        width: 60%;
+    }
+
+    .input-name label,
+    .input-e-mail,
+    .input-message label {
+        font-size: 4vw;
+    }
+
+    .hanabi-1 {
+        width: 50vw;
+        left: 2vw;
+        top: 15vh;
+    }
+    .hanabi-2 {
+        width: 30vw;
+        left: -5vw;
+        top: 15vh;
+    }
+
+    footer {
+        bottom: -50vw;
+        background-image: url(../images/footer_sp.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 75vw;
+    }
+
+    .insta-icon img {
+        width: 7vw;
+    }
+
+    .copylite {
+        font-size: 4vw;
+    }
+}
